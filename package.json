@@ -1,0 +1,23 @@
+{
+  "name": "nicknack",
+  "description": "A really simple static web server",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Linus G Thiel <linus@hanssonlarsson.se> (http://hanssonlarsson.se/)",
+  "contributors": [ 
+    { "name": "Linus G Thiel", "email": "linus@hanssonlarsson.se" }, 
+    { "name": "Gunnar Hansson", "email": "gunnar@hanssonlarsson.se" }
+  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/mit-license.php"
+  }],
+  "bin": {
+    "nicknack": "./bin/nicknack"
+  },
+  "dependencies": {
+    "connect": "1.4.1"
+  },
+  "keywords": ["web server", "static"],
+  "engines": { "node": "0.4.5" }
+}

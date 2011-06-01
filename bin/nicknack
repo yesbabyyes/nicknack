@@ -1,0 +1,48 @@
+#!/usr/bin/env node
+
+/*
+ * nicknack is a very simple http server for serving up static
+ * content for development purposes.
+ *
+ * It will automatically serve index.html if the path has no
+ * extension (it doesn't even check if it's a directory).
+ *
+ * Usage:
+ * nicknack directory portnumber
+ */
+
+if(process.argv.length < 4) {
+    console.error("Usage: " + process.argv[1] + " directory port");
+    process.exit(1);
+}
+
+var connect = require("connect"),
+    path = require("path");
+
+var route = function(app) {
+    // Match all requests
+    app.get("*", function(req, res, next) {
+        // If the requested URL lacks extension
+        if(path.extname(req.url) == "") {
+            // Serve them index.html instead
+            req.url += "/index.html";
+        }
+        // Log requests
+        console.log(req.url);
+        // Pass forward to the static server
+        next();
+    });
+};
+
+var directory = process.argv[2],
+    port = process.argv[3];
+
+connect(
+    // Mount the route
+    connect.router(route),
+    // Serve static files in the specified directory
+    connect.static(directory)
+// And listen on the specified port.
+).listen(port, function() {
+    console.log("nicknack serving files in " + directory + " on port " + port);
+});
