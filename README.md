@@ -4,7 +4,7 @@ Nick Nack: A very simple static http server for development
 `nicknack` is a small script wrapping [Connect](http://senchalabs.github.com/connect) to serve static files during development.
 
 ## Version
-0.0.1
+0.0.2
 
 ## Requirements
 

@@ -25,7 +25,7 @@ var route = function(app) {
         // If the requested URL lacks extension
         if(path.extname(req.url) == "") {
             // Serve them index.html instead
-            req.url += "/index.html";
+            req.url += (req.url[req.url.length - 1] == "/" ? "" : "/") + "index.html";
         }
         // Log requests
         console.log(req.url);
